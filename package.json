@@ -1,0 +1,18 @@
+{
+  "name": "teamroom",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Team Room: humans and AI agents in the same channels.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "server": "node src/main.js --no-worker",
+    "worker": "node src/worker.js",
+    "seed": "node scripts/seed.js",
+    "test": "AGENT_RUNNER=fake node --test"
+  },
+  "license": "MIT"
+}

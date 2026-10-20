@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Room</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232f6f68'/><text x='16' y='22' font-size='16' font-family='system-ui' font-weight='700' fill='white' text-anchor='middle'>TR</text></svg>">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app" id="app" hidden>
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">TR</span> Team Room</div>
+      <div class="section-label">Channels</div>
+      <nav id="channel-list" class="channel-list" aria-label="Channels"></nav>
+      <div class="section-label">Workspace</div>
+      <nav id="workspace-nav" class="workspace-nav" aria-label="Workspace"></nav>
+      <div class="me" id="me"></div>
+    </aside>
+
+    <main class="chat">
+      <header class="chat-header">
+        <div class="chat-title">
+          <h1 id="channel-name"></h1>
+          <p id="channel-topic"></p>
+          <nav id="channel-tabs" class="channel-tabs" aria-label="Channel views" hidden></nav>
+        </div>
+        <button id="members-toggle" class="members-toggle" type="button" aria-controls="side"></button>
+      </header>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <div id="page" class="page" hidden></div>
+      <form id="composer" class="composer" autocomplete="off">
+        <div class="composer-box">
+          <textarea rows="1" maxlength="4000" aria-label="Message"></textarea>
+          <button type="submit">Send</button>
+        </div>
+        <p class="composer-error" role="alert" hidden></p>
+        <p class="composer-hint"><kbd>Enter</kbd> to send, <kbd>Shift</kbd>+<kbd>Enter</kbd> for a new line, <kbd>@</kbd> to mention an agent</p>
+      </form>
+    </main>
+
+    <aside class="side" id="side">
+      <div id="side-members" class="side-view" aria-label="Members"></div>
+      <section id="side-thread" class="side-view thread-view" aria-label="Thread" hidden>
+        <header class="side-head">
+          <div>
+            <h2>Thread</h2>
+            <p id="thread-channel" class="muted small"></p>
+          </div>
+          <button type="button" class="icon-button" id="thread-close" aria-label="Close thread">×</button>
+        </header>
+        <div id="thread-messages" class="messages thread-messages" aria-live="polite"></div>
+        <form id="thread-composer" class="composer" autocomplete="off">
+          <div class="composer-box">
+            <textarea rows="1" maxlength="4000" aria-label="Reply in thread" placeholder="Reply in thread…"></textarea>
+            <button type="submit">Reply</button>
+          </div>
+          <p class="composer-error" role="alert" hidden></p>
+        </form>
+      </section>
+    </aside>
+  </div>
+
+  <div class="picker" id="picker" hidden>
+    <div class="picker-card">
+      <h1>Who are you?</h1>
+      <p class="muted">There is no login yet. Pick a person to continue. To demo two people, open a second window with <code>?as=ayse</code> in the URL.</p>
+      <p class="picker-error" id="picker-error" hidden></p>
+      <div id="picker-list" class="picker-list"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
